@@ -14,13 +14,13 @@ pip install python-cron
 ```
 
 ## Usage
-The `pycron` module provides a `@cron` decorator that may be used to mark functions declared `async` as cron jobs. The decorator takes a croniter-style cron string as input to determine when the function should be executed. For example, the following `test` function would be automatically executed every 5 seconds:
+The `pycron` module provides a `@cron` decorator that may be used to mark functions declared `async` as cron jobs. The decorator takes a croniter-style cron string as input to determine when the function should be executed. For example, the following `test` function would be automatically executed every 5 minutes:
 
 ```Python
 from datetime import datetime
 import pycron
 
-@pycron.cron("* * * * * */5")
+@pycron.cron("*/5 * * * *")
 async def test(timestamp: datetime):
     print(f"test cron job running at {timestamp}")
 
